@@ -1,1 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 2.0rem;
+}
 
+body {
+  font-family: Sarala;
+}
+
+.fixed-panel {
+  height: 100vh;
+  background: #1E8BC3;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-circle{
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #eee no-repeat center;
+  background-size: cover;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.2));
+}
+
+.avatar {
+  background-image: url(background.jpg);
+}
+
+.separator {
+  background: white;
+  height: 2px;
+  width: 200px;
+  margin: auto;
+}
+
+.name {
+  color: white;
+  padding: 2rem 0 0 0;
+}
+
+h1 {
+  padding: 1rem 0 0 0;
+}
+
+h6 {
+  color: #eee;
+  font-family: Inconsolata;
+  font-size: 0.8rem;
+}
+
+.icon-list {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a.sm-link {
+  color: white;
+  text-decoration: none;
+  padding: 0 4px 0 4px;
+}
+
+a.sm-link:hover {
+  color: #F9BF3B;
+}
+
+.scrollable-container {
+  padding: 2rem;
+}
+
+.cv-section {
+  line-height: 1.5rem;
+}
+
+.section-header {
+  color: #019875;
+  font-family: Inconsolata;
+}
+
+h4 {margin: 1rem 0 1rem 0;}
+
+.section-content {
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+li {
+  list-style: none;
+  margin: 0 0 1rem 0;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #444;
+  font-weight: bolder;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  transition: color 100ms;
+}
+
+h5 {
+  color: #444;
+  font-size: 1.0rem;
+}
+
+.project-link:hover {
+  color: #6C7A89;
+  transition: color 200ms;
+}
+
+@media (min-width: 800px) and (orientation: landscape) {
+  body {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .fixed-panel {
+    min-width: 50vw;
+    min-height: 100vh;
+  }
+
+  .scrollable-panel {
+    width: 50vw;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .cv-section {
+    display: flex;
+    align-items:flex-start;
+  }
+
+  h4 {
+    width: 7rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
