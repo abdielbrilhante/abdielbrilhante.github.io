@@ -1,0 +1,15 @@
+{
+  "name": "abdiel-brilhante",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Abdiel Brilhante",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": ""
+  },
+  "dependencies": {
+    "node-sass": "^4.7.2"
+  }
+}
