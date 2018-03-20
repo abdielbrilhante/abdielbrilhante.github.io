@@ -1,17 +1,25 @@
+function getById(id) {
+  return document.getElementById(id);
+}
+
+function getByClass(cl) {
+  return document.getElementsByClassName(cl)[0];
+}
+
 const reveal = direction => {
-  document.getElementById('skills-container').classList.add(`reveal-${direction}`);
+  getByClass('main-card').classList.add(`reveal-${direction}`);
 };
 
 const hide = () => {
-  document.getElementById('skills-container').classList.remove('reveal-left');
-  document.getElementById('skills-container').classList.remove('reveal-right');
+  getByClass('main-card').classList.remove('reveal-left');
+  getByClass('main-card').classList.remove('reveal-right');
 };
 
-document.getElementById('webDev').addEventListener(
+document.getElementById('wdSelect').addEventListener(
   'click', () => reveal('left')
 );
 
-document.getElementById('compSci').addEventListener(
+document.getElementById('csSelect').addEventListener(
   'click', () => reveal('right')
 );
 

@@ -1,139 +1,196 @@
-@import url('https://fonts.googleapis.com/css?family=Overpass')
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed')
 
-body
-  margin: 0
+$color-bg: #F7F9FA
+$color-card-b: #FFFFFF
+$color-accent: #A6D9D9
 
-#app
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  color: #2c3e50
-  padding: 40px
-  background: linear-gradient(to bottom right, #FDE3A7, #F2784B)
+$ease-in-out-quad: cubic-bezier(0.645, 0.045, 0.355, 1)
+
+*
   box-sizing: border-box
-  font-family: 'Overpass', sans-serif
+  font-family: 'Roboto Condensed'
+  color: #333
 
-h1, h2, h3, h4, h5, h6
+body, h1, h2, h3, h4, h5, h6, p
   margin: 0
-
-.main-container
-  width: calc(100vw - 80px)
-  height: calc(100vh - 80px)
-  display: flex
-  justify-content: space-between
-
-.profile, #skills-container
-  overflow: hidden
-  box-shadow: 0 0 40px rgba(0, 0, 0, .25)
-  border-radius: 4px
-  position: relative
-
-.profile
-  background-color: white
-  width: calc((100vh - 80px) * 9 / 16)
-  display: flex
-  flex-direction: column
-  align-items: center
-
-.profile .picture
-  width: 120px
-  height: 120px
-  border-radius: 50%
-  background: #eee no-repeat center
-  background-size: cover
-  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.1))
-  margin-top: 40px
-
-.profile p
-  padding: 0 30px
-  line-height: 1.5rem
-  font-size: 15px
-  font-weight: 300
-
-.profile .avatar
-  background-image: url(http://www.invisibleoranges.com/files/2016/07/devin-townsend.jpg)
-
-footer
-  position: absolute
-  bottom: 0
-  width: 100%
-  height: 60px
-  display: flex
-  justify-content: center
-  align-items: center
-  background-color: #34495E
-
-  a
-    font-size: 18px
-    color: white
-
-  a+a
-    margin-left: 18px
-
-ul
   padding: 0
 
-#skills-container
-  flex-grow: 1
-  margin-left: 40px
-  background: linear-gradient(to bottom right, #34495E, #663399)
+h1, h2, h3, h4, h5, h6
+  font-weight: 400
 
-.skills
-  display: flex
-  align-items: center
-  transition: all 750ms cubic-bezier(0.645, 0.045, 0.355, 1)
-  height: 100%
+h1
+  font-size: 22px
+  text-transform: uppercase
 
-.skill-selector
-  flex-grow: 1
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
-  color: black
-  filter: invert(1)
-  &:hover
-    cursor: pointer
+.main-container
+  width: 100vw
+  height: 100vh
+  background: #edeff3
+  padding: 3rem 5rem
 
-.skill-selector img
-  width: 90px
-
-.skill-selector h4
-  font-size: 24px
-  margin-top: 20px
-
-section
-  padding: 30px 30px 0 30px
-
-.header-wd
-  font-family: 'Consolas', monospace
-
-.header-cs
-  font-family: 'Lora', serif
-
-.divider
-  width: 1px
-  height: 40%
-  background-color: white
-
-li
-  list-style: none
-  text-decoration: none
-
-.details
+.main-card
+  background: #f7f9fa
   width: 100%
   height: 100%
-  background-color: white
+  box-shadow: 0 1.75rem 2rem -1.5rem rgba(black, .25)
+  position: relative
+  overflow: hidden
+
+  &.reveal-left
+    .home
+      // opacity: 0
+      // transform: translateY(100%)
+      // transition: all 700ms $ease-in-out-quad
+      .picture::before
+        width: 100%
+        height: 100%
+        border-radius: 0
+        z-index: 1
+        transition: all 500ms $ease-in-out-quad
+    .webdev
+      z-index: 1
+      opacity: 1
+      transition: z-index 0ms, opacity 500ms ease
+      transition-delay: 500ms
+
+  &.reveal-right
+    .home
+      transform: translateY(-100%)
+      transition: all 700ms $ease-in-out-quad
+    .skills
+      transform: translateY(-2rem)
+      opacity: 1
+      transition: all 600ms $ease-in-out-quad
+
+.home
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
+  position: relative
+  transition: all 500ms ease
+
+  .corner
+    position: absolute
+    font-size: .9rem
+    padding: 1.5rem
+  
+    h2
+      color: #333
+      margin-bottom: 4px
+
+    p
+      color: #555
+
+    &.header
+      top: 0
+      left: 0
+
+    &.footer
+      bottom: 0
+      left: 0
+
+  h1
+    &:hover
+      cursor: pointer
+
+
+  .picture
+    width: 20rem
+    height: 20rem
+    margin: 0 4rem
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 400ms ease
+    // position: relative
+
+    &:hover
+      cursor: pointer
+      transition: all 500ms ease
+      background: #4ECDC4
+
+    &::before
+      content: ''
+      position: absolute
+      width: 20rem
+      height: 20rem
+      border-radius: 50%
+      background: $color-accent
+
+  img
+    width: 10rem
+    filter: brightness(1.1)
+    mix-blend-mode: luminosity
+
+.skills
+  width: 100%
+  height: 100%
   position: absolute
   top: 0
-  transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1)
+  left: 0
+  z-index: -1
   opacity: 0
+  display: flex
+  justify-content: space-between
+  transition: all 500ms ease
 
-.details-content
-  height: 100%
-  overflow: auto
+  p
+    line-height: 1.5rem
+
+  .summary
+    width: 40%
+    padding: 4rem 0 4rem 4rem
+
+    span
+      position: absolute
+      bottom: 4rem
+      left: 4rem
+      font-size: 1.5rem
+
+      &:hover
+        cursor: pointer
+
+    h3
+      margin-bottom: 1rem
+      padding-bottom: 1.1rem
+      border-bottom: 1px solid rgba(black, .15)
+
+  .projects
+    overflow: auto
+    width: 50%
+    padding: 4rem 4rem 0 0
+
+    .project
+      margin-bottom: 4rem
+
+      h6
+        text-transform: uppercase
+        font-size: .7rem
+        font-weight: 600
+        color: #F2784B
+
+        em
+          font-style: normal
+
+      h2
+        font-weight: 500
+        margin-bottom: .25rem
+
+      p
+        font-family: serif
+        margin-top: 1rem
+        opacity: .5
+
+  // &.webdev
+  //   bottom: 100%
+
+  &.compsci
+    display: 
 
 ::-webkit-scrollbar
-  width: 4px
+  width: 0px
 
 ::-webkit-scrollbar-track
   background: #f1f1f1 
@@ -142,52 +199,4 @@ li
   background: #bbb 
 
 ::-webkit-scrollbar-thumb:hover
-  background: #555 
-
-#web-details
-  right: 100%
-
-#comp-details
-  left: 100%
-
-.reveal-left .skills
-  transform: translateX(100%)
-  transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1)
-
-.reveal-left #web-details
-  transform: translateX(100%)
-  opacity: 1
-  transition: all 700ms cubic-bezier(0.645, 0.045, 0.355, 1)
-
-.reveal-right .skills
-  transform: translateX(-100%)
-  transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1)
-
-.reveal-right #comp-details
-  transform: translateX(-100%)
-  opacity: 1
-  transition: all 700ms cubic-bezier(0.645, 0.045, 0.355, 1)
-
-.details footer
-  background: none
-  justify-content: flex-start
-  span
-    font-size: 24px
-    margin: 0 30px
-    &:hover
-      cursor: pointer
-
-@media (max-width: 1000px)
-  .skills
-    flex-direction: column
-
-  .skill-selector img
-    width: 60px
-
-  .skill-selector h4
-    margin-bottom: 0
-    margin-top: 20px
-
-  .divider
-    width: 40%
-    height: 1px
+  background: #555
